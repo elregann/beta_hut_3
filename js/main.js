@@ -479,7 +479,7 @@ CONFIG.chatConversation.forEach((msg, index) => {
       feed.scrollTop = feed.scrollHeight;
 
       // mulai dari chat ke-4 sampai terakhir yang di-scroll dengan benar
-      if (index >= 3) {
+      if (index >= 2) {
         scrollCallToBottom();
       }
     }, 750);
