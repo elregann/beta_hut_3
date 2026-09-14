@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jarak Bukan Batas</title>
+<link rel="icon" href="assets/icon/hati.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="fireworks-canvas"></canvas>
+<canvas id="cursor-canvas"></canvas>
+<div id="confetti-layer"></div>
+
+<div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+
+<button class="music-btn muted" id="music-btn" aria-label="Musik">
+  <svg class="music-icon icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M9 3v10.55A4 4 0 1 0 11 17V7h7V3z"/></svg>
+  <svg class="music-icon icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3v10.55A4 4 0 1 0 11 17V7h7V3z" fill="currentColor" stroke="none"/><line x1="4" y1="4" x2="20" y2="20"/></svg>
+</button>
+
+<!-- ═══ SCENE 1 : INTRO ═══ -->
+<section class="scene active" id="scene-intro">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="bg-shapes">
+    <span class="shape s1"></span><span class="shape s2"></span><span class="shape s3"></span><span class="shape s4"></span>
+    <span class="shape s5"></span><span class="shape s6"></span><span class="shape s7"></span><span class="shape s8"></span>
+  </div>
+  <div class="intro-content">
+    <div class="envelope-scene">
+      <img class="env-float ef1 ico" src="assets/icon/hati.png" alt="">
+      <img class="env-float ef2 ico" src="assets/icon/pesawat.png" alt="">
+      <img class="env-float ef3 ico" src="assets/icon/surat-cinta.png" alt="">
+      <svg class="envelope-svg" viewBox="0 0 200 160">
+        <rect x="20" y="40" width="160" height="100" rx="10" fill="#fff" stroke="#FFB3D1" stroke-width="3"/>
+        <path d="M20 45 L100 105 L180 45" fill="none" stroke="#FFB3D1" stroke-width="3"/>
+        <circle cx="100" cy="105" r="14" fill="#FF6B9D"/>
+        <path d="M100 110 C94 104 90 100 94 96 C97 93 100 96 100 98 C100 96 103 93 106 96 C110 100 106 104 100 110 Z" fill="#fff"/>
+      </svg>
+    </div>
+    <p class="intro-tag">Sebuah pesan lintas kota</p>
+    <h1 class="intro-heading" id="typewriter-text"></h1>
+    <p class="intro-desc">Ada yang sedang memikirkanmu di kejauhan. Buka pelan pelan ya.</p>
+    <button class="btn-primary" id="btn-open-envelope">
+      <span class="btn-shimmer"></span> Buka Pesannya <img class="btn-icon ico" src="assets/icon/pesawat.png" alt="">
+    </button>
+    <p class="hint-text">Nyalakan suaramu agar lebih terasa</p>
+  </div>
+</section>
+
+<!-- ═══ SCENE 2 : PERJALANAN ═══ -->
+<section class="scene" id="scene-journey">
+  <div class="blob blob-4"></div>
+  <div class="blob blob-5"></div>
+  <div class="journey-content">
+    <p class="scene-kicker">Perjalanan Hati</p>
+    <h2 class="section-heading">Sejauh Apapun,</h2>
+    <p class="section-sub">Jarak hanyalah angka, bukan alasan untuk berhenti menyayangi.</p>
+
+    <div class="map-card">
+      <svg class="journey-map" id="journey-map" viewBox="0 0 360 190">
+        <circle cx="46" cy="158" r="9" class="map-glow"/>
+        <circle cx="314" cy="40" r="9" class="map-glow glow-2"/>
+        <path id="flight-path" class="flight-path" d="M46 158 Q180 28 314 40"/>
+        <image class="cloud-drift" href="assets/icon/awan.png" x="58" y="52" width="42" height="28"/>
+        <image class="cloud-drift cd2" href="assets/icon/awan.png" x="232" y="96" width="34" height="23"/>
+        <g id="plane-group">
+          <image id="plane" href="assets/icon/pesawat.png" width="30" height="30"/>
+        </g>
+        <circle cx="46" cy="158" r="4.5" class="pin-core"/>
+        <circle cx="314" cy="40" r="4.5" class="pin-core pc2"/>
+        <text x="46" y="180" text-anchor="middle" class="city-label" id="city-a-label">Kota A</text>
+        <text x="314" y="20" text-anchor="middle" class="city-label" id="city-b-label">Kota B</text>
+      </svg>
+      <div class="journey-meta">
+        <div class="journey-stat"><img class="ico" src="assets/icon/penanda.png" alt=""><b id="journey-city-a">Kota A</b><em>Kota asalmu</em></div>
+        <img class="journey-arrow ico" src="assets/icon/pesawat.png" alt="">
+        <div class="journey-stat"><img class="ico" src="assets/icon/kota.png" alt=""><b id="journey-city-b">Kota B</b><em>Kota tujuannya</em></div>
+      </div>
+      <p class="distance-line">Jarak kalian: <b><span id="journey-distance">342</span> km</b></p>
+    </div>
+
+    <button class="btn-primary" id="btn-to-letters"><span class="btn-shimmer"></span> Baca Surat dari Dia <img class="btn-icon ico" src="assets/icon/surat-cinta.png" alt=""></button>
+  </div>
+</section>
+
+<!-- ═══ SCENE 3 : SURAT ═══ -->
+<section class="scene" id="scene-letters">
+  <div class="blob blob-6"></div>
+  <div class="blob blob-7"></div>
+  <img class="paper-plane-deco ico" src="assets/icon/pesawat-kertas.png" alt="">
+  <div class="letter-scene">
+    <p class="scene-kicker">Surat untukmu</p>
+    <h2 class="section-heading">Dari Seseorang yang Merindukanmu</h2>
+
+    <div class="letter-wrap">
+      <div class="letter-top">
+        <svg viewBox="0 0 400 30" preserveAspectRatio="none">
+          <path d="M0 0 H400 V16 Q380 26 360 16 Q340 26 320 16 Q300 26 280 16 Q260 26 240 16 Q220 26 200 16 Q180 26 160 16 Q140 26 120 16 Q100 26 80 16 Q60 26 40 16 Q20 26 0 16 Z" fill="#FF6B9D"/>
+        </svg>
+      </div>
+      <div class="letter-body-wrap">
+        <div class="letter-icon-seal"><img class="ico" src="assets/icon/surat-cinta.png" alt=""></div>
+        <h3 class="letter-greeting">Hai, <span id="msg-name">Nama Kamu</span></h3>
+        <div class="letter-text">
+          <p>Kalau kamu sedang membaca ini, berarti pesannya sudah sampai lebih dulu daripada aku. Jarak memang masih memisahkan kita, tapi rasanya aneh sekali karena hatiku seperti selalu tinggal di dekatmu.</p>
+          <p>Terima kasih sudah kuat menjalani hari hari sendiri, sudah sabar menunggu kabar, dan tetap memilih bertahan pada kita. Kamu hebat, lebih dari yang kamu tahu.</p>
+          <p>Simpan baik baik ya. Kelak saat kita akhirnya bertemu, aku ingin memelukmu lama sekali, membayar semua rindu yang selama ini hanya bisa dititipkan pada doa. <img class="inline-ico ico" src="assets/icon/hati.png" alt=""></p>
+        </div>
+        <div class="letter-sign">
+          Dari aku yang jauh,
+          <div class="sign-name" id="sign-name">Seseorang yang Merindukanmu</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-secondary" id="btn-to-candle">Lanjut ke Lilin Kita <img class="btn-icon ico" src="assets/icon/lilin.png" alt=""></button>
+  </div>
+</section>
+
+<!-- ═══ SCENE 4 : LILIN ═══ -->
+<section class="scene" id="scene-candle">
+  <div class="blob blob-8"></div>
+  <div class="blob blob-9"></div>
+  <div class="bg-shapes">
+    <span class="shape s1"></span><span class="shape s2"></span><span class="shape s3"></span><span class="shape s4"></span>
+  </div>
+  <div class="candle-scene">
+    <p class="scene-kicker">Ritual kecil kita</p>
+    <h2 class="section-heading">Tiup Lilinnya Bersama</h2>
+    <p class="section-sub">Satu lilin di kotamu, satu lilin di kotanya. Meski berjauhan, kita tetap meniup harapan yang sama.</p>
+
+    <div class="candle-stage" id="candle-stage">
+      <div class="candle-deco">
+        <img class="cd cd1 ico" src="assets/icon/kilau.png" alt="">
+        <img class="cd cd2 ico" src="assets/icon/hati.png" alt="">
+        <img class="cd cd3 ico" src="assets/icon/kilau.png" alt="">
+        <img class="cd cd4 ico" src="assets/icon/surat-cinta.png" alt="">
+      </div>
+
+      <svg class="candle-svg" id="candle-svg" viewBox="0 0 360 300">
+        <defs>
+          <linearGradient id="plate-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFE1EE"/><stop offset="1" stop-color="#FFC1DA"/>
+          </linearGradient>
+          <linearGradient id="candle-grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FFD1E3"/><stop offset="0.5" stop-color="#FFF0F6"/><stop offset="1" stop-color="#FFC3DC"/>
+          </linearGradient>
+          <linearGradient id="candle-grad2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#DDD6FE"/><stop offset="0.5" stop-color="#F3EFFF"/><stop offset="1" stop-color="#C9BCFB"/>
+          </linearGradient>
+          <radialGradient id="aura-grad">
+            <stop offset="0%" stop-color="rgba(255,220,120,0.9)"/>
+            <stop offset="60%" stop-color="rgba(255,160,60,0.35)"/>
+            <stop offset="100%" stop-color="rgba(255,120,0,0)"/>
+          </radialGradient>
+          <linearGradient id="flame-grad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#FFF3B0"/><stop offset="45%" stop-color="#FFB648"/><stop offset="100%" stop-color="#FF7A2E"/>
+          </linearGradient>
+          <radialGradient id="warm-grad">
+            <stop offset="0%" stop-color="rgba(255,214,140,0.55)"/><stop offset="100%" stop-color="rgba(255,214,140,0)"/>
+          </radialGradient>
+        </defs>
+
+        <ellipse cx="180" cy="280" rx="120" ry="10" fill="rgba(167,139,250,0.18)"/>
+        <ellipse cx="180" cy="268" rx="112" ry="16" fill="url(#plate-grad)"/>
+        <ellipse cx="180" cy="263" rx="92" ry="11" fill="#FFF3F9" opacity="0.8"/>
+
+        <g class="candle-unit" transform="translate(120,150)">
+          <rect x="-24" y="0" width="48" height="112" rx="10" fill="url(#candle-grad)"/>
+          <ellipse cx="0" cy="2" rx="24" ry="8" fill="#FFE6F1"/>
+          <path d="M-20 8 C-18 22 -13 22 -13 10 Z" fill="#FFD9E8"/>
+          <path d="M14 8 C17 26 22 24 20 10 Z" fill="#FFD9E8"/>
+          <rect x="-3" y="-16" width="6" height="18" rx="3" fill="#8A6A4F"/>
+          <g class="candle-flame" transform="translate(0,-44)">
+            <g class="flame-anim flame-anim-1">
+              <ellipse class="flame-aura" cx="0" cy="-6" rx="16" ry="20" fill="url(#aura-grad)"/>
+              <path class="flame-body" d="M0 -26 C9 -14 12 -4 8 6 C5 13 -5 13 -8 6 C-12 -4 -9 -14 0 -26 Z" fill="url(#flame-grad)"/>
+              <path class="flame-inner" d="M0 -13 C4.5 -7 6 -1 3.6 5 C2 8.4 -2 8.4 -3.6 5 C-6 -1 -4.5 -7 0 -13 Z" fill="#FFE28A"/>
+              <ellipse class="flame-core" cx="0" cy="3.6" rx="3" ry="4.6" fill="#FFF9E0"/>
+            </g>
+          </g>
+        </g>
+
+        <g class="candle-unit" transform="translate(240,162)">
+          <rect x="-20" y="0" width="40" height="100" rx="9" fill="url(#candle-grad2)"/>
+          <ellipse cx="0" cy="2" rx="20" ry="7" fill="#F1EDFF"/>
+          <path d="M-16 8 C-14 20 -10 20 -10 9 Z" fill="#E4DDFD"/>
+          <rect x="-3" y="-16" width="6" height="18" rx="3" fill="#8A6A4F"/>
+          <g class="candle-flame" transform="translate(0,-44)">
+            <g class="flame-anim flame-anim-2">
+              <ellipse class="flame-aura" cx="0" cy="-6" rx="14" ry="18" fill="url(#aura-grad)"/>
+              <path class="flame-body" d="M0 -23 C8 -12 10.5 -3 7 5 C4.5 11.5 -4.5 11.5 -7 5 C-10.5 -3 -8 -12 0 -23 Z" fill="url(#flame-grad)"/>
+              <path class="flame-inner" d="M0 -11 C4 -6 5 -1 3 4.4 C1.8 7.2 -1.8 7.2 -3 4.4 C-5 -1 -4 -6 0 -11 Z" fill="#FFE28A"/>
+              <ellipse class="flame-core" cx="0" cy="3.2" rx="2.6" ry="4" fill="#FFF9E0"/>
+            </g>
+          </g>
+        </g>
+
+        <text class="plate-name" x="120" y="297" text-anchor="middle" id="plate-city-a">Kota A</text>
+        <text class="plate-name" x="240" y="297" text-anchor="middle" id="plate-city-b">Kota B</text>
+        <ellipse id="warm-glow" cx="180" cy="140" rx="150" ry="110" fill="url(#warm-grad)" opacity="0"/>
+
+        <g id="sg1" class="smoke-group" transform="translate(120,106)" opacity="0">
+          <circle cx="0" cy="0" r="6" fill="#CBD5E1"/>
+          <circle cx="4" cy="-6" r="5" fill="#CBD5E1"/>
+          <circle cx="-3" cy="-12" r="4" fill="#CBD5E1"/>
+        </g>
+        <g id="sg2" class="smoke-group" transform="translate(240,118)" opacity="0">
+          <circle cx="0" cy="0" r="5" fill="#CBD5E1"/>
+          <circle cx="-4" cy="-6" r="4.5" fill="#CBD5E1"/>
+          <circle cx="3" cy="-11" r="4" fill="#CBD5E1"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="candle-cta" id="cake-cta">
+      <span class="cta-glow-ring"></span>
+      <button class="btn-blow" id="btn-blow"><img class="blow-wind ico" src="assets/icon/angin.png" alt=""> Tiup dengan Satu Nafas</button>
+      <p class="hint-text">atau ketuk lilinnya langsung</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCENE 5 : VIDEO CALL ═══ -->
+<section class="scene" id="scene-vcall">
+  <div class="blob blob-10"></div>
+  <div class="blob blob-11"></div>
+  <div class="vcall-scene">
+    <p class="scene-kicker">Panggilan malam itu</p>
+    <h2 class="section-heading">Layar Kecil, Rasa yang Besar</h2>
+
+    <div class="phone">
+      <div class="phone-notch"></div>
+      <div class="call-screen" id="call-screen">
+        <div class="call-bg-orbs"><span></span><span></span><span></span></div>
+        <div class="avatar-main">
+          <div class="avatar-ring"></div>
+          <div class="avatar-circle ac-main">
+            <img id="avatar-img" class="avatar-photo" src="assets/icon/pasangan.png" alt="">
+            <span class="avatar-initial" id="avatar-initial">S</span>
+          </div>
+        </div>
+        <div class="call-name" id="call-name">Sayang</div>
+        <div class="call-status" id="call-status">memanggil…</div>
+        <div class="sound-wave" id="sound-wave"><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="self-view">
+          <div class="avatar-circle ac-mini">
+            <img id="avatar-mini-img" class="avatar-photo" src="assets/icon/aku.png" alt="">
+            <span class="avatar-initial" id="avatar-mini-initial">A</span>
+          </div>
+        </div>
+        <div class="call-timer" id="call-timer">00:00</div>
+        <div class="call-actions">
+          <button class="call-btn cb-mute" id="cb-mute" aria-label="Mikrofon">
+            <img class="cb-ic ic-mic ico" src="assets/icon/mikrofon.png" alt="">
+            <img class="cb-ic ic-mute ico" src="assets/icon/mikrofon-mati.png" alt="">
+          </button>
+          <button class="call-btn cb-heart" id="cb-heart" aria-label="Kirim hati"><img class="cb-ic ico" src="assets/icon/hati.png" alt=""></button>
+          <button class="call-btn cb-end" id="cb-end" aria-label="Akhiri panggilan"><img class="cb-ic ico" src="assets/icon/telepon-mati.png" alt=""></button>
+        </div>
+        <div class="call-hearts-layer" id="call-hearts"></div>
+      </div>
+    </div>
+
+    <div class="chat-feed" id="chat-feed"></div>
+    <button class="btn-primary chat-cta" id="btn-to-gallery"><span class="btn-shimmer"></span> Lihat Kenangan Kita <img class="btn-icon ico" src="assets/icon/kamera.png" alt=""></button>
+  </div>
+</section>
+
+<!-- ═══ SCENE 6 : GALERI ═══ -->
+<section class="scene" id="scene-gallery">
+  <div class="blob blob-12"></div>
+  <div class="blob blob-13"></div>
+  <div class="gallery-scene">
+    <p class="scene-kicker">Album kita</p>
+    <h2 class="section-heading">Potongan Hari yang Kita Simpan</h2>
+    <p class="section-sub">Setiap foto adalah bukti bahwa jarak tidak pernah menang.</p>
+    <div class="polaroid-grid" id="polaroid-grid"></div>
+    <button class="btn-primary" id="btn-to-package"><span class="btn-shimmer"></span> Ada Paket untukmu <img class="btn-icon ico" src="assets/icon/paket.png" alt=""></button>
+  </div>
+</section>
+
+<!-- ═══ SCENE 7 : PAKET RINDU ═══ -->
+<section class="scene" id="scene-package">
+  <div class="blob blob-2"></div>
+  <div class="blob blob-6"></div>
+  <div class="package-scene">
+    <p class="scene-kicker">Paket rindu</p>
+    <h2 class="section-heading">Sesuatu Tiba di Depan Pintu</h2>
+    <p class="section-sub">Kiriman dari jauh. Ketuk kotaknya pelan pelan.</p>
+
+    <div class="gift-stage">
+      <img class="pkg-spark ps1 ico" src="assets/icon/kilau.png" alt="">
+      <img class="pkg-spark ps2 ico" src="assets/icon/hati.png" alt="">
+      <img class="pkg-spark ps3 ico" src="assets/icon/pesawat.png" alt="">
+
+      <svg id="gift-svg" class="gift-svg" viewBox="0 0 240 220">
+        <defs>
+          <linearGradient id="box-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8FB6"/><stop offset="1" stop-color="#FF6B9D"/></linearGradient>
+          <linearGradient id="lid-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFA9C9"/><stop offset="1" stop-color="#FF7FAB"/></linearGradient>
+          <linearGradient id="rib-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF3B0"/><stop offset="1" stop-color="#FFE66D"/></linearGradient>
+        </defs>
+        <ellipse cx="120" cy="205" rx="80" ry="9" fill="rgba(255,107,157,0.2)"/>
+        <rect x="50" y="105" width="140" height="95" rx="10" fill="url(#box-g)"/>
+        <rect x="108" y="105" width="24" height="95" fill="url(#rib-g)"/>
+        <g id="gift-lid">
+          <rect x="40" y="82" width="160" height="30" rx="8" fill="url(#lid-g)"/>
+          <rect x="108" y="82" width="24" height="30" fill="url(#rib-g)"/>
+          <path d="M120 82 C104 64 86 70 96 82 C102 88 112 86 120 82 Z" fill="url(#rib-g)" stroke="#F2C94C" stroke-width="1.5"/>
+          <path d="M120 82 C136 64 154 70 144 82 C138 88 128 86 120 82 Z" fill="url(#rib-g)" stroke="#F2C94C" stroke-width="1.5"/>
+          <circle cx="120" cy="82" r="6" fill="#FFE66D" stroke="#F2C94C" stroke-width="1.5"/>
+        </g>
+      </svg>
+
+      <div class="gift-reveal" id="gift-reveal" style="display:none">
+        <div class="ticket">
+          <div class="ticket-left">
+            <img class="ticket-plane ico" src="assets/icon/pesawat.png" alt="">
+            <span class="ticket-route"><b id="ticket-route">Kota A → Kota B</b></span>
+            <span class="ticket-note">Satu tiket, seribu rindu yang pulang</span>
+          </div>
+          <div class="ticket-stub">
+            <span class="stub-label">RINDU</span>
+            <span class="stub-code">LDR-001</span>
+          </div>
+        </div>
+        <div class="gift-card-reveal">
+          <h3>Hadiahnya adalah</h3>
+          <p>Janji untuk bertemu. Selama kita saling menunggu, jarak hanyalah rute pulang yang sedang dipersiapkan.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="btn-secondary" id="btn-to-finale">Menuju Penutup <img class="btn-icon ico" src="assets/icon/bulan.png" alt=""></button>
+  </div>
+</section>
+
+<!-- ═══ SCENE 8 : FINALE ═══ -->
+<section class="scene" id="scene-finale">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-5"></div>
+  <div class="blob blob-9"></div>
+  <div class="finale-content">
+    <p class="scene-kicker">Doa untuk kita</p>
+    <h2 class="finale-heading">Jarak Boleh Jauh,<br>Hati Kita Tidak</h2>
+    <p class="finale-sub">Untuk kamu yang sedang menunggu, dan untuk aku yang sedang berjuang pulang. Terima kasih sudah memilih bertahan.</p>
+
+    <div class="interactive-stars">
+      <button class="i-star" data-msg="Semoga sehat selalu sampai hari pertemuan kita"><img class="ico" src="assets/icon/bintang.png" alt=""></button>
+      <button class="i-star" data-msg="Semoga rindu ini selalu menemukan jalannya pulang"><img class="ico" src="assets/icon/bintang-ekor.png" alt=""></button>
+      <button class="i-star" data-msg="Semoga sinyal selalu kuat saat kita butuh suara"><img class="ico" src="assets/icon/kilau.png" alt=""></button>
+      <button class="i-star" data-msg="Semoga setiap hari kita semakin dekat"><img class="ico" src="assets/icon/bulan.png" alt=""></button>
+      <button class="i-star" data-msg="Semoga kita selalu sabar menunggu waktu itu tiba"><img class="ico" src="assets/icon/hati.png" alt=""></button>
+    </div>
+    <p class="star-hint">Ketuk bintangnya satu satu</p>
+
+    <button class="btn-primary btn-restart" id="btn-restart"><span class="btn-shimmer"></span> Ulangi dari Awal <img class="btn-icon ico" src="assets/icon/ulangi.png" alt=""></button>
+  </div>
+</section>
+
+<div class="wish-popup" id="wish-popup"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
