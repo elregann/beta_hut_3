@@ -359,7 +359,7 @@ function blowCandles() {
       goToScene('scene-vcall');
       setTimeout(stopFireworks, 7000);
       setTimeout(stopConfetti, 8000);
-    }, 4000);
+    }, 8000);
   }, delay);
 }
 
