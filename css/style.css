@@ -137,7 +137,7 @@ body {
 .btn-secondary:hover { background: var(--purple); color: #fff; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(167,139,250,.4); }
 
 /* ikon PNG di dalam tombol & teks */
-.btn-icon { width: 20px; height: 20px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.22)); }
+.btn-icon { width: 30px; height: 30px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,.22)); }
 .btn-secondary .btn-icon { filter: none; }
 .inline-ico { width: 15px; height: 15px; object-fit: contain; vertical-align: -2px; }
 
