@@ -283,7 +283,7 @@ body {
 }
 .btn-blow:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 16px 40px rgba(255,179,71,.55); }
 .btn-blow:active { transform: scale(.97); }
-.blow-wind { width: 26px; height: 26px; object-fit: contain; animation: blow-wiggle 1.5s ease-in-out infinite; }
+.blow-wind { width: 50px; height: 50px; object-fit: contain; animation: blow-wiggle 1.5s ease-in-out infinite; }
 @keyframes blow-wiggle { 0%, 100% { transform: rotate(0) scale(1); } 25% { transform: rotate(-10deg) scale(1.1); } 75% { transform: rotate(10deg) scale(1.1); } }
 
 /* ═══ SCENE 5 : VIDEO CALL ══════════════════════════════ */
