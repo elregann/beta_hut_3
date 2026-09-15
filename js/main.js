@@ -38,7 +38,7 @@ const CONFIG = {
     { src: 'assets/images/foto5.jpeg', caption: 'Ini juga hehe', rotate: -3 },
     { src: 'assets/images/foto6.jpeg', caption: 'Sampai bertemu lagi', rotate: 2 },
   ],
-  micBlow: true,   // ubah jadi true untuk meniup lilin dengan mikrofon
+  micBlow: false,   // ubah jadi true untuk meniup lilin dengan mikrofon
 };
 
 /* ── STATE ───────────────────────────────────────────────── */
